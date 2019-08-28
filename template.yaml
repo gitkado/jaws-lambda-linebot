@@ -1,0 +1,29 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: SAM Lambda LineBot
+
+Resources:
+  # https://docs.aws.amazon.com/ja_jp/serverless-application-model/latest/developerguide/serverless-sam-cli-layers.html
+  LineBotFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: function.webhook
+      Runtime: ruby2.5
+      FunctionName: linebot-func
+      CodeUri: .
+      Timeout: 10
+      Environment:
+        Variables:
+          LINE_CHANNEL_ID: 【LINE Developersから取得】
+          LINE_CHANNEL_SECRET: 【LINE Developersから取得】
+          LINE_CHANNEL_TOKEN: 【LINE Developersから取得】
+      Events:
+        GetResource:
+          Type: Api
+          Properties:
+            Path: /webhook
+            Method: post
+
+Outputs:
+  LineBotFunction:
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/webhook"
