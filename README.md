@@ -90,18 +90,32 @@
 
 ![](images/2-2-5.png)
 
-#### チャネル設定 (途中)
+#### チャネル設定 ([参考サイト](https://www.virtual-surfer.com/entry/2018/07/22/190000))
+自動応答を無効化していない場合は、Botとして返信することができません。  
 
-1. 
+1. 使用するチャネルをクリックします。
 
-![]()
+![](images/2-3-1.png)
 
-#### LINEに友達登録 (途中)
-スマホにインストールされているLINEのQRコードリーダーでQRコードから友達登録します。
+2. LINE@機能の利用までスクロールして、自動応答メッセージの「設定はこちら」をクリックします。
 
-1. 
+![](images/2-3-2.png)
 
-![]()
+3. 別タブで応答設定が表示されるので、詳細設定の応答メッセージ:オフを選択して更新します。
+
+![](images/2-3-3.png)
+
+#### LINEに友達登録
+以下の手順で友達登録用のQRコードが表示されます。  
+スマホにインストールされているLINEのQRコードリーダーで友達登録してください。
+
+1. 友達登録するチャネルをクリックします。
+
+![](images/2-3-1.png)
+
+2. Bot情報までスクロールして、LINEアプリへのQRコードが確認できます。
+
+![](images/2-4-1.png)
 
 ### 3. S3バケットを作成
 > バケット名を「jaws-osc-kado」としています。  
@@ -221,4 +235,3 @@ $ sam deploy \
 ### 参考
 [GitHub: LineBotSdk](https://github.com/line/line-bot-sdk-ruby)  
 [LINE MessagingApi 利用登録手順](https://jp.fujitsu.com/solutions/cloud/k5/playground/webhandson/preparation/06.html)  
-[LINE MessagingApi 自動返信解除手順](https://www.virtual-surfer.com/entry/2018/07/22/190000)  
