@@ -41,7 +41,7 @@
 
 - [こちらのサイト](https://developers.line.biz/ja/)でアカウント登録を行なってください。
 
-### 2. LINE MessagingApiを登録 (途中)
+### 2. LINE MessagingApiを登録
 #### プロバイダー作成
 
 1. [LINEdevelopersプロバイダー一覧](https://developers.line.biz/console/)で「新規プロバイダー作成」をクリックします。
@@ -105,9 +105,28 @@
 
 ![](images/2-3-3.png)
 
+#### アクセストークン発行
+Bot開発でアクセストークンも必要な情報なので事前に発行します。
+
+1. 使用するチャネルをクリックします。
+
+![](images/2-3-1.png)
+
+2. メッセージ送受信設定までスクロールして、アクセストークンの「再発行」をクリックします。
+
+![](images/2-4-2.png)
+
+3. 失効までの時間に0時間後を選択して、「再発行」をクリックします。
+
+![](images/2-4-3.png)
+
+4. アクセストークンの発行が完了します。
+
+![](images/2-4-4.png)
+
 #### LINEに友達登録
 以下の手順で友達登録用のQRコードが表示されます。  
-スマホにインストールされているLINEのQRコードリーダーで友達登録してください。
+スマホにインストールされているLINEのQRコードリーダーで友達登録できます。
 
 1. 友達登録するチャネルをクリックします。
 
@@ -115,7 +134,7 @@
 
 2. Bot情報までスクロールして、LINEアプリへのQRコードが確認できます。
 
-![](images/2-4-1.png)
+![](images/2-5-2.png)
 
 ### 3. S3バケットを作成
 > バケット名を「jaws-osc-kado」としています。  
@@ -182,7 +201,8 @@ $ git clone https://github.com/gitkado/jaws-lambda-linebot.git
 ```
 
 ### 7. Gemソース取得
-Lambdaで標準以外のGem(ライブラリ)を使用する場合は、GemのソースをLambdaに含める必要があります。  
+Lambdaで標準以外のGem(ライブラリ)を使用する場合は、  
+GemのソースをLambdaに含める必要があります。  
 以下の手順でGemのソースを取得します。
 
 ```sh
@@ -191,12 +211,23 @@ $ bundle install
 $ bundle install --deployment
 ```
 
-### 8. template.yamlのENVにLINE MessagingApi情報を追記 (途中)
-1. ``「LINE MessagingApiを登録」``で登録したMessagingApiを確認します。
+### 8. template.yamlのENVにLINE MessagingApi情報を追記
+``「LINE MessagingApiを登録」``で登録したMessagingApiを確認します。  
+teplate.yamlに確認した値をセットします。
 
-![]()
+1. 使用するチャネルをクリックします。
 
-2. template.yamlの **【LINE Developersから取得】** を修正して保存します。
+![](images/2-3-1.png)
+
+2. 基本情報までスクロールして、Channel ID, Channel Secretを確認します。
+
+![](images/8-2.png)
+
+3. メッセージ送受信設定までスクロールして、アクセストークンを確認します。
+
+![](images/2-4-4.png)
+
+4. template.yamlの **【LINE Developersから取得】** を修正して保存します。
 
 ```yaml
 # template.yaml(17行目~)
@@ -222,10 +253,12 @@ $ sam deploy \
 ```
 
 ### 10. 確認
+> 東京リージョンのリソース表示を行うURLになっています。
+
 - 以下のリソースが作成されていることを確認してください。
-  - CloudFormation
-  - Lambda
-  - ApiGateway
+  - [CloudFormation](https://ap-northeast-1.console.aws.amazon.com/cloudformation/home?region=ap-northeast-1#/stacks)
+  - [Lambda](https://ap-northeast-1.console.aws.amazon.com/lambda/home?region=ap-northeast-1#/functions)
+  - [ApiGateway](https://ap-northeast-1.console.aws.amazon.com/apigateway/home?region=ap-northeast-1#/apis)
 
 ### 11. LINEで試す
 ``「LINE MessagingApiを登録」``でQRコードから登録したLINEアカウントにメッセージを送信して試してみてください。
@@ -234,4 +267,3 @@ $ sam deploy \
 
 ### 参考
 [GitHub: LineBotSdk](https://github.com/line/line-bot-sdk-ruby)  
-[LINE MessagingApi 利用登録手順](https://jp.fujitsu.com/solutions/cloud/k5/playground/webhandson/preparation/06.html)  
