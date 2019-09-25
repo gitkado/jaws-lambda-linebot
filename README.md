@@ -243,7 +243,7 @@ LINE_CHANNEL_TOKEN: 【LINE Developersから取得】
 ```sh
 $ sam package \
     --template-file template.yaml \
-    --s3-bucket 【バケット名】] \
+    --s3-bucket 【バケット名】 \
     --output-template-file packaged-template.yaml \
     --region ap-northeast-1
 $ sam deploy \
