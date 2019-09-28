@@ -260,6 +260,11 @@ $ sam deploy \
   - [Lambda](https://ap-northeast-1.console.aws.amazon.com/lambda/home?region=ap-northeast-1#/functions)
   - [ApiGateway](https://ap-northeast-1.console.aws.amazon.com/apigateway/home?region=ap-northeast-1#/apis)
 
+CloudFormation で作成されたスタックを選択し、「出力」タブを選択すると **LineBotFunction** というキーとURLが表示されています。
+URLをコピペして Line Developers の チャンネル設定＞メッセージ送受信設定 の **Webhook送信** を許可します。
+続けて **Webhook URL** を編集して上記の **LineBotFunction** のURLをコピペします。
+
+
 ### 11. LINEで試す
 ``「LINE MessagingApiを登録」``でQRコードから登録したLINEアカウントにメッセージを送信して試してみてください。
 
