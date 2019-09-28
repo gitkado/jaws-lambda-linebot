@@ -103,6 +103,8 @@
 
 3. 別タブで応答設定が表示されるので、詳細設定の応答メッセージ:オフを選択して更新します。
 
+### 画像はWebhookがオフですが **オン** にしてください！
+
 ![](images/2-3-3.png)
 
 #### アクセストークン発行
@@ -260,9 +262,9 @@ $ sam deploy \
   - [Lambda](https://ap-northeast-1.console.aws.amazon.com/lambda/home?region=ap-northeast-1#/functions)
   - [ApiGateway](https://ap-northeast-1.console.aws.amazon.com/apigateway/home?region=ap-northeast-1#/apis)
 
-CloudFormation で作成されたスタックを選択し、「出力」タブを選択すると **LineBotFunction** というキーとURLが表示されています。
-URLをコピペして Line Developers の チャンネル設定＞メッセージ送受信設定 の **Webhook送信** を許可します。
-続けて **Webhook URL** を編集して上記の **LineBotFunction** のURLをコピペします。
+### CloudFormation で作成されたスタックを選択し、「出力」タブを選択すると **LineBotFunction** というキーとURLが表示されています。
+### URLをコピペして Line Developers の チャンネル設定＞メッセージ送受信設定 の **Webhook送信** を許可します。
+### 続けて **Webhook URL** を編集して上記の **LineBotFunction** のURLをコピペします。
 
 
 ### 11. LINEで試す
